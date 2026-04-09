@@ -1,0 +1,11 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+@font-face{
+    font-family: NanumGothic;
+    src: url('./fonts/NanumGothic.ttf') format(truetype);
+}
+
+body{
+    font-family: NanumGothic;
+    font-size: 15px;
+}
