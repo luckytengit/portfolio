@@ -1,4 +1,4 @@
-# portfolio
+# Portfolio
 Portfolio Site
 
 저의 포트폴리오 사이트 소스입니다.
