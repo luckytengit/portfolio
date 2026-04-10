@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
@@ -21,13 +21,7 @@ class RegisterController extends Controller
     }
 
     // 회원가입 DB 처리
-    public function register(Request $request) {
-
-        $request->validate([
-            'name' => 'required|max:255'
-            ,'email' => 'required|email|unique:users|max:255'
-            ,'password' => 'required|max:255'
-        ]);
+    public function register(RegisterUserRequest $request) {
 
         // POST
         $name = $request->name;
@@ -40,6 +34,10 @@ class RegisterController extends Controller
             ,'email' => $email
             ,'password' => Hash::make($password)
         ]);
+
+        // Run login
+        auth()->login($user);
+
 
         // 이동
         return redirect()->route('index');

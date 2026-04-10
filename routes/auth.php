@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 
 
-// 회원가입관련
+// 비로그인시
 Route::middleware('guest')->group(function() {
     // 회원가입 폼 로드
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])
