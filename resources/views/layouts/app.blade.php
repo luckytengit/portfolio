@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sangho KIM</a>
+            <a class="navbar-brand" href="{{ route('index') }}/">Sangho KIM</a>
 
             <button
             class="navbar-toggler"
@@ -25,11 +25,13 @@
 
             <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="{{ config('app.portfolioMainPath') }}/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('index') }}/">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
               <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+              @guest
               <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ config('app.portfolioMainPath') }}/register">회원가입</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">회원가입</a></li>
+              @endguest
             </ul>
             </div>
         </div>
