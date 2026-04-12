@@ -1,0 +1,10 @@
+{
+  "compatibility": {
+    "embeddedLanguages": ["html", "php"]
+  },
+  "environment": {
+    "phpVersion": "8.2.0",
+    "includePaths": [],
+    "shortOpenTag": true
+  }
+}

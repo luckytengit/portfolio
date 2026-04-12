@@ -25,13 +25,38 @@
 
             <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="{{ route('index') }}/">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-              @guest
-              <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">회원가입</a></li>
-              @endguest
+                @auth
+
+                    <li class="nav-item">
+                        <div class="nav-link text-white">
+                            ( {{ auth()->user()->name }}님 반갑습니다 )
+                        </div>
+                    </li>
+                @endauth
+
+                <li class="nav-item"><a class="nav-link" href="{{ route('index') }}/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+
+                @guest
+
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">회원가입</a></li>
+                @endguest
+
+                @auth
+
+                    <li class="nav-item">
+                    <a  class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        로그아웃
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    </li>
+                @endauth
+
             </ul>
             </div>
         </div>

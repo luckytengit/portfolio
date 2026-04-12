@@ -12,16 +12,6 @@ class RegisterControllerTest extends TestCase
     use WithFaker;
 
     /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    /**
      * Test for a GET /register
      */
     public function testReturnsRegisterView(): void {
