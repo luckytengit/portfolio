@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
 
         // 이동
-        return to_route('index');
+        return redirect()->route("index");
     }
 
 }
