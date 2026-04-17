@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "15b1dcde50629ec09d7943e3b02d765c",
     "packages": [
         {
             "name": "brick/math",
@@ -5631,6 +5631,67 @@
                 }
             ],
             "time": "2024-11-21T01:49:47+00:00"
+        },
+        {
+            "name": "wangta69/laravel-editor",
+            "version": "8.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wangta69/laravel-editor.git",
+                "reference": "cc577aeba5d7637f94c3444189c25c2ec2635f0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wangta69/laravel-editor/zipball/cc577aeba5d7637f94c3444189c25c2ec2635f0c",
+                "reference": "cc577aeba5d7637f94c3444189c25c2ec2635f0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pondol\\Editor\\EditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pondol\\Editor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pondol",
+                    "email": "wangta69@gmail.com",
+                    "homepage": "https://www.onstory.fun"
+                }
+            ],
+            "description": "WysiWig Editors for laravel",
+            "homepage": "https://www.onstory.fun/packages/laravel-editor",
+            "keywords": [
+                "editor",
+                "froala",
+                "laravel",
+                "naver",
+                "richtext",
+                "tinymce",
+                "wysiwyg",
+                "네이버",
+                "라라벨",
+                "스마트에디터"
+            ],
+            "support": {
+                "issues": "https://github.com/wangta69/laravel-editor/issues",
+                "source": "https://github.com/wangta69/laravel-editor/tree/8.12.1"
+            },
+            "time": "2026-03-04T07:30:03+00:00"
         }
     ],
     "packages-dev": [

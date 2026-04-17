@@ -1,7 +1,7 @@
 
 @extends ("layouts.app")
 
-@section("title", "회원가입 폼")
+@section("title", "회원가입")
 
 
 
@@ -17,7 +17,7 @@
 
                 <table>
                     <tr>
-                        <td class="p-1">
+                        <td class="p-1" style="width:100px">
                             이름
                         </td>
                         <td class="p-1">

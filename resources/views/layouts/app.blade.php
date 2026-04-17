@@ -35,7 +35,7 @@
                 @endauth
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('index') }}/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">포트폴리오</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('experience.index')}}">포트폴리오</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
 
                 @guest

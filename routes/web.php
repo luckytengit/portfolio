@@ -19,7 +19,3 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [RegisterController::class, 'index'])
     ->name('index');
 
-
-// 인증관련
-require __DIR__ . "/auth.php";
-

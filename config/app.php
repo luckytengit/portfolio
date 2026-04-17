@@ -186,7 +186,7 @@ return [
     ])->toArray(),
 
 
-    // 포트폴리오 사이트 메인 경로
-    'portfolioMainPath' => env('PORTFOLIO_MAIN_PATH'),
+    // 홈페이지 관리자 이메일
+    'appAdminEmail' => env('APP_ADMIN_EMAIL'),
 
 ];
