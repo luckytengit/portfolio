@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttachmentController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterController;
@@ -18,4 +19,9 @@ use App\Http\Controllers\Auth\RegisterController;
 // 포트폴리오 사이트 메인
 Route::get('/', [RegisterController::class, 'index'])
     ->name('index');
+
+// 파일 첨부
+Route::resource('experience.attachments', AttachmentController::class)
+    ->shallow()
+    ->only(['store', 'destory']);
 

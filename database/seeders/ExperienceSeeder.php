@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attachment;
 use App\Models\Experience;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,5 +19,7 @@ class ExperienceSeeder extends Seeder
         User::all()->each(function (User $user) {
             Experience::factory()->for($user)->create();
         });
+
+        Experience::factory()->has(Attachment::factory());
     }
 }

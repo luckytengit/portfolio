@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portfolio;
 
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExperienceRequest;
 use App\Http\Requests\UpdateExperienceRequest;
@@ -15,7 +16,7 @@ class ExperienceController extends Controller
      */
     public function index() {
         return view("portfolio.list", [
-            'experience' => Experience::with('user')->latest()->get(),
+            'experience' => Experience::with('user')->with('attachments')->latest()->get(),
             'isSiteAdmin' => config('app.appAdminEmail') == auth()->user()?->email,
         ]);
     }
@@ -43,7 +44,12 @@ class ExperienceController extends Controller
 
         $user = $request->user();
 
-        $user->experience()->create($request->validated());
+        $experience = $user->experience()->create(
+            $request->only(['subject', 'content'])
+        );
+
+        // 파일첨부 관련
+        $this->attachments($request, $experience);
 
         return to_route("experience.index");
     }
@@ -70,9 +76,23 @@ class ExperienceController extends Controller
      * 내경력 메뉴 수정 DB 처러
      */
     public function update(UpdateExperienceRequest $request, Experience $experience) {
-        $experience->update($request->validated());
+        $experience->update(
+            $request->only(['subject', 'content'])
+        );
+
+        // 파일첨부 관련
+        $this->attachments($request, $experience);
 
         return to_route("experience.index");
+    }
+
+    /**
+     * 파일첨부 처리 맴버함수
+     */
+    private function attachments(Request $request, $experience) {
+        if ($request->hasFile('attachments')) {
+            app(AttachmentController::class)->store($request, $experience);
+        }
     }
 
     /**

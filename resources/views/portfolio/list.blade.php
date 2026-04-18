@@ -16,7 +16,11 @@
 
                     <div class="row p-2">
                         <div class="col-md-4">
-                            .
+                            @if (!empty($item->attachments[0]))
+                                <a href="{{ $item->attachments[0]->link }}" target="_blank">
+                                    <img src="{{ $item->attachments[0]->link }}" style="width:100%">
+                                </a>
+                            @endif
                         </div>
                         <div class="col-md-8 border-bottom border-secondary">
                             <p>

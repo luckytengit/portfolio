@@ -11,7 +11,7 @@
                 ※ 경력을 등록해 주십시오.
             </div>
 
-            <form method="POST" name="experienceFrm" id="experienceFrm" action="{{ $formActionUrl }}">
+            <form method="POST" name="experienceFrm" id="experienceFrm" action="{{ $formActionUrl }}" enctype="multipart/form-data">
                 @csrf
 
                 @if ($experience->id)
@@ -28,7 +28,20 @@
 
                     <div class="mb-3">
                         <label for="filename" class="form-label">이미지</label>
-                        <input type="file" name="filename" class="form-control" id="filename">
+                        <input type="file" name="attachments[]" class="form-control" multiple>
+
+                        <ul>
+                            @if (!empty($experience->attachments))
+                            @foreach ($experience->attachments as $attachment)
+                                <li class="d-flex">
+                                    <a href="{{ $attachment->link }}" download="{{ $attachment->original_name }}">
+                                        {{ $attachment->original_name }}
+                                    </a>
+                                    <button type="button" class="attachmentDelBtn btn badge text-bg-primary rounded-pill m-1" data-id="{{ $attachment->id}}">삭제</button>
+                                </li>
+                            @endforeach
+                            @endif
+                        </ul>
                     </div>
 
                     <div class="mb-3">
@@ -48,12 +61,21 @@
 
                     <div class="mb-3">
                         @if ($isSiteAdmin)
-                        <button type="button" id="saveBtn" class="btn btn-primary btn-sm">등록</button>
+                            <button type="button" id="saveBtn" class="btn btn-primary btn-sm">등록</button>
+                            <a href="{{ route('experience.index')}}" class="btn btn-primary btn-sm">취소</a>
                         @endif
                     </div>
                 </div>
 
             </form>
+
+            <!-- 파일 첨부 - 삭제 -->
+            <form method="POST" name="fileDelFrm" id="fileDelFrm" action="" enctype="multipart/form-data" style="display:none">
+                @csrf
+                @method('DELETE')
+                <input type="file" name="attachment[]" multiple>
+            </form>
+
 
             <!-- For smart-editor -->
             <script src="{{ $editorPath }}plugins/editor/smart-editor/js/service/HuskyEZCreator.js"></script>
@@ -70,9 +92,27 @@
                  * 이벤트 등록
                  */
                 document.addEventListener("DOMContentLoaded", function() {
+                    // 저장 버튼 이벤트
                     const saveBtn = document.querySelector("#saveBtn");
                     saveBtn.addEventListener("click", saveFn, false);
 
+                    // 파일첨부 삭제 버튼 이벤트
+                    const fileDelContainer = document.querySelectorAll(".attachmentDelBtn");
+
+                    fileDelContainer.forEach(item => {
+                        item.addEventListener("click", (e) => {
+
+                            const clickedItem = e.target.closest('[data-id]');
+
+                            let dataId = 0;
+                            if (clickedItem) {
+                                dataId = clickedItem.dataset.id;
+                                console.log(dataId);
+                            }
+
+                            fileDelFn(dataId);
+                        });
+                    });
                 });
 
                 /**
@@ -96,6 +136,17 @@
                     oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 
                     document.getElementById("experienceFrm").submit();
+                }
+
+                /**
+                 * 파일 첨부 버튼 처리 이벤트
+                 */
+                function fileDelFn(id) {
+                    let fileFrm = document.getElementById("fileDelFrm");
+                    fileFrm.action = "{{ route('index') }}/attachments/" + id;
+                    console.log(fileFrm.action)
+
+                    document.getElementById("fileDelFrm").submit();
                 }
             </script>
 

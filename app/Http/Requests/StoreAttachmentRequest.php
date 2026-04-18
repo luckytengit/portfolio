@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreExperienceRequest extends FormRequest
+class StoreAttachmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,9 +22,7 @@ class StoreExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 경력 저장시 폼 체크
-            'subject' => ['required', 'max:255'],
-            'content' => ['required'],
+            //
             'attchments.*' => ['nullable', 'image'],
         ];
     }
