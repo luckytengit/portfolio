@@ -20,8 +20,4 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', [RegisterController::class, 'index'])
     ->name('index');
 
-// 파일 첨부
-Route::resource('experience.attachments', AttachmentController::class)
-    ->shallow()
-    ->only(['store', 'destory']);
 
