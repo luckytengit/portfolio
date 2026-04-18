@@ -15,7 +15,7 @@
                 @foreach($experience as $item)
 
                     <div class="row p-2">
-                        <div class="col-md-4">
+                        <div class="col-md-4 p-2">
                             @if (!empty($item->attachments[0]))
                                 <a href="{{ $item->attachments[0]->link }}" target="_blank">
                                     <img src="{{ $item->attachments[0]->link }}" style="width:100%">

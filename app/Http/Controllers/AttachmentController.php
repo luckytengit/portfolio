@@ -30,10 +30,6 @@ class AttachmentController extends Controller
      */
     public function store(Request $request, Experience $experience)
     {
-        //
-        // dump($request);
-        // exit;
-
         foreach ($request->file('attachments') as $attachment) {
             // 업로드 저장 구현
             $attachment->storePublicly('attachments', 'public');
