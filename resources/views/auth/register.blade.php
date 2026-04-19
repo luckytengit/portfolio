@@ -15,54 +15,34 @@
             <form action="{{ route('register')}}" method="POST">
                 @csrf
 
-                <table>
-                    <tr>
-                        <td class="p-1" style="width:100px">
-                            이름
-                        </td>
-                        <td class="p-1">
-                            <input type="text" name="name" value="{{ old('name') }}" >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-1">
-                            이메일
-                        </td>
-                        <td class="p-1">
-                            <input type="text" name="email" value="{{ old('email') }}" >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-1">
-                            비밀번호
-                        </td>
-                        <td class="p-1">
-                            <input type="password" name="password" value="" >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-1">
-                        </td>
-                        <td class="p-1">
-                            <div class="text-danger">
-                                @if ($errors->any())
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-1">
-                        </td>
-                        <td class="p-1">
-                            <button type="submit" class="btn btn-primary btn-sm">회원가입</button>
-                        </td>
-                    </tr>
-                </table>
+                <div class="row p-2">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">이름</label>
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="email" placeholder="이름을 입력해주십시오.">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">이메일</label>
+                        <input type="text" name="email" value="{{ old('email') }}" class="form-control" id="email" placeholder="이메일을 입력해주십시오.">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">비밀번호</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호를 입력해주십시오.">
+                    </div>
+
+                    <div class="text-danger">
+                        @if ($errors->any())
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary btn-sm">회원가입</button>
+                    </div>
+                </div>
 
             </form>
         </div>

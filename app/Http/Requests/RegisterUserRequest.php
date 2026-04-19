@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password as LiPassword;
 
 class RegisterUserRequest extends FormRequest
 {
@@ -23,9 +24,9 @@ class RegisterUserRequest extends FormRequest
     {
         return [
             // For a register user
-            'name' => 'required|max:255'
-            ,'email' => 'required|email|unique:users|max:255'
-            ,'password' => 'required|max:255'
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => ['required', 'max:255', LiPassword::default()],
         ];
     }
 }
