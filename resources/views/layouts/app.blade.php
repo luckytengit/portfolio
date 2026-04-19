@@ -38,6 +38,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('experience.index')}}">포트폴리오</a></li>
                 <li class="nav-item"><a class="nav-link" href="https://github.com/luckytengit" target="_blank">GitHub</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://cafekimsh.cafe24.com/" target="_blank">이전포트폴리오</a></li>
 
                 @guest
 
