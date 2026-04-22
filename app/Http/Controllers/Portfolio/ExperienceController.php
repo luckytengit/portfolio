@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Portfolio;
 
@@ -106,7 +107,13 @@ class ExperienceController extends Controller
      */
     public function destroy(Experience $experience)
     {
-        //
+        // 파일 모델 삭제(실 파일은 옵져버에서 구현 자동 삭제됨)
+        $experience->attachments()->get()->each->delete();
+
+        // 글 삭제
+        $experience->delete();
+
+        return to_route('experience.index');
     }
 }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAttachmentRequest;
 use App\Models\Attachment;
 use App\Models\Experience;
 use Illuminate\Http\Request;
