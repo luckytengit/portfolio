@@ -97,7 +97,8 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center p-3">
-      <p>© 2026 Sangho KIM. All rights reserved.</p>
+        <div>Email ksh51999@daum.net</div>
+        <p>© 2026 Sangho KIM. All rights reserved.</p>
     </footer>
 
 </body>
