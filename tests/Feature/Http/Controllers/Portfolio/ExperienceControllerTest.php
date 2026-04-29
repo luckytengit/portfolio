@@ -49,4 +49,44 @@ class ExperienceControllerTest extends TestCase
             $attachment->hashName('attachments')
         );
     }
+
+    /**
+    * 글 수정시 파일 저장 부분 테스트
+    */
+    public function testUpdateExperience() {
+        Storage::fake('public');
+        $attachment = UploadedFile::fake()->image('fileExp2.jpg');
+
+        $experience = Experience::factory()->create();
+
+        $data = [
+            'subject' => $this->faker->text(10),
+            'content' => $this->faker->text,
+        ];
+
+        $this->actingAs($experience->user)
+            ->put(route('experience.update', $experience), [
+                ...$data,
+                'attachments' => [
+                    $attachment,
+                ],
+            ])
+            ->assertRedirect();
+
+        // experiences 테이블에 데이터 있는가 체크
+        $this->assertDatabaseHas('experiences', $data);
+
+        // attachments 테이블에 저장되었는가 체크
+        $this->assertDatabaseHas('attachments', [
+            'original_name' => $attachment->getClientOriginalName(),
+            'name' => $attachment->hashName('attachments'),
+        ]);
+
+        // 실 스토리지에 파일 저장되었는가 체크
+        Storage::disk('public')->assertExists(
+            $attachment->hashName('attachments')
+        );
+
+    }
+
 }
