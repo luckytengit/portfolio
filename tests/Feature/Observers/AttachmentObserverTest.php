@@ -20,7 +20,7 @@ class AttachmentObserverTest extends TestCase
         $storage = Storage::fake('public');
         $file = UploadedFile::fake()->image('testFile.jpg');
 
-        $file->store('/,public');
+        $file->store('/public/attachments');
 
         $attachment = Attachment::factory()->state([
             'original_name' => $file->getClientOriginalName(),
