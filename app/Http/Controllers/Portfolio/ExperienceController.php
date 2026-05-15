@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
+    public function __construct() {
+        // ExperiencePolicy 정책 적용
+        $this->authorizeResource(Experience::class, 'experience');
+    }
+
     /**
      * 내경력 메뉴 리스트 뷰단 로드
      */

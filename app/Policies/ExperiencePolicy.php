@@ -11,9 +11,9 @@ class ExperiencePolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(?User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class ExperiencePolicy
      */
     public function view(User $user, Experience $experience): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +29,8 @@ class ExperiencePolicy
      */
     public function create(User $user): bool
     {
-        //
+        // 등록 폼 화면단 및 등록 처리단 정책(슈퍼 관리자만 사용)
+        return $user->id === $experience->user_id && $user->email == config("app.appAdminEmail");
     }
 
     /**
@@ -37,7 +38,8 @@ class ExperiencePolicy
      */
     public function update(User $user, Experience $experience): bool
     {
-        //
+        // 수정 폼 화면단 및 수정 처리단 정책(슈퍼 관리자만 사용)
+        return $user->id === $experience->user_id && $user->email == config("app.appAdminEmail");
     }
 
     /**
@@ -45,7 +47,8 @@ class ExperiencePolicy
      */
     public function delete(User $user, Experience $experience): bool
     {
-        //
+        // 삭제 처리단 정책
+        return $user->id === $experience->user_id;
     }
 
     /**
@@ -53,7 +56,7 @@ class ExperiencePolicy
      */
     public function restore(User $user, Experience $experience): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +64,6 @@ class ExperiencePolicy
      */
     public function forceDelete(User $user, Experience $experience): bool
     {
-        //
+        return false;
     }
 }

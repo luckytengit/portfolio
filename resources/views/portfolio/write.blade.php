@@ -60,10 +60,8 @@
                     </div>
 
                     <div class="mb-3">
-                        @if ($isSiteAdmin)
-                            <button type="button" id="saveBtn" class="btn btn-primary btn-sm">등록</button>
-                            <a href="{{ route('experience.index')}}" class="btn btn-primary btn-sm">취소</a>
-                        @endif
+                        <button type="button" id="saveBtn" class="btn btn-primary btn-sm">등록</button>
+                        <a href="{{ route('experience.index')}}" class="btn btn-primary btn-sm">취소</a>
                     </div>
                 </div>
 

@@ -36,7 +36,8 @@
                             {!! $item->content !!}
 
                             <div>
-                                @if ($isSiteAdmin)
+                                @can(['update', 'delete'], $experience)
+
                                     <form method="POST" name="deleteFrm" action="{{ route('experience.destroy', $item->id) }}">
                                         @csrf
                                         @method("DELETE")
@@ -44,7 +45,8 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('experience.edit', ['experience' => $item->id]) }}">수정</a>
                                         <button type="submit" class="btn btn-danger btn-sm">삭제</button>
                                     </form>
-                                @endif
+
+                                @endcan
 
                             </div>
                         </div>
@@ -54,10 +56,11 @@
             </div>
 
             <div class="p-1">
-                @if ($isSiteAdmin)
+                @can('create', $experience)
 
                     <a class="btn btn-primary btn-sm" href="{{ route('experience.create') }}"> 등록 </a>
-                @endif
+
+                @endcan
 
             </div>
 
