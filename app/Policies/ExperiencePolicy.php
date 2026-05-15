@@ -30,7 +30,7 @@ class ExperiencePolicy
     public function create(User $user): bool
     {
         // 등록 폼 화면단 및 등록 처리단 정책(슈퍼 관리자만 사용)
-        return $user->id === $experience->user_id && $user->email == config("app.appAdminEmail");
+        return $user->email == config("app.appAdminEmail");
     }
 
     /**
