@@ -10,6 +10,9 @@
             <div class="p-1">
                 ※ 경력 내역
             </div>
+            <div class="p-1">
+                - 참고) 사이트가 없어진 곳은 주소 링크 없는 URL만 적었습니다.
+            </div>
 
             <div class="p-1">
                 @foreach($experience as $item)

@@ -105,7 +105,6 @@
                             let dataId = 0;
                             if (clickedItem) {
                                 dataId = clickedItem.dataset.id;
-                                console.log(dataId);
                             }
 
                             fileDelFn(dataId);
@@ -124,7 +123,6 @@
                     }
 
                     // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-                    console.log(document.getElementById("content"))
                     if (!document.getElementById("content").value) {
                         alert("내용을 입력해 주십시오.");
                         return;
@@ -142,7 +140,6 @@
                 function fileDelFn(id) {
                     let fileFrm = document.getElementById("fileDelFrm");
                     fileFrm.action = "{{ route('index') }}/attachments/" + id;
-                    console.log(fileFrm.action)
 
                     document.getElementById("fileDelFrm").submit();
                 }
