@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            ExperienceSeeder::class,
+            // ExperienceSeeder::class,
+            BoardSeeder::class,
         ]);
     }
 }
