@@ -37,7 +37,8 @@ class BoardController extends Controller
                 'display_name' => '',
             ],
             'formActionUrl' => route('boards.store'), // 등록 폼 Action url
-        ]);
+            'nameReadonly' => '', // name inputbox readonly 적용
+         ]);
     }
 
     /**
@@ -70,6 +71,7 @@ class BoardController extends Controller
         return view("board.write", [
             'board' => $board,
             'formActionUrl' => route('boards.update', $board), // 수정 폼 Action url
+            'nameReadonly' => 'readonly', // name inputbox readonly 적용
         ]);
     }
 

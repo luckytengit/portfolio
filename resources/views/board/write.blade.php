@@ -27,7 +27,7 @@
 
                     <div class="mb-3">
                         <label for="subject" class="form-label">게시판 코드</label>
-                        <input type="text" name="name" value="{{ old("name", $board->name) }}" class="form-control" id="subject" placeholder="게시판 코드를 입력해주십시오.">
+                        <input type="text" name="name" value="{{ old("name", $board->name) }}" class="form-control" id="subject" {{ $nameReadonly }} placeholder="게시판 코드를 입력해주십시오.">
                     </div>
 
                     <div class="mb-3">
@@ -53,7 +53,7 @@
                                 등록
                             @endif
                         </button>
-                        <a href="{{ route('boards.index')}}" class="btn btn-primary btn-sm">취소</a>
+                        <a href="{{ route('boards.index') }}" class="btn btn-primary btn-sm">취소</a>
                     </div>
                 </div>
 
