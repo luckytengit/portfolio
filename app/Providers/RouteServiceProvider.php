@@ -43,6 +43,10 @@ class RouteServiceProvider extends ServiceProvider
             // 포트폴리오 메뉴 관련
             Route::middleware('web')
                 ->group(base_path('routes/experience.php'));
+
+            // 게시판관리 메뉴 관련
+            Route::middleware('web')
+                ->group(base_path('routes/board.php'));
         });
     }
 }

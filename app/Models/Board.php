@@ -17,4 +17,9 @@ class Board extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    // 라우트키를 id에서 name으로.
+    public function getRouteKeyName() {
+        return 'name';
+    }
 }

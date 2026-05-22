@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -26,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             }
         });
+
+        // 페이징관련(부트스트렙5)
+        Paginator::useBootstrapFive();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Unique;
 
 class StoreBoardRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreBoardRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreBoardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            // 게시판관리 등록 저장시 폼 체크
+            'name' => ['required', 'max:50', 'min:4', 'unique:boards,name'],
+            'display_name' => ['required', 'max:255'],
         ];
     }
 }

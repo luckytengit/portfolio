@@ -11,7 +11,7 @@ class UpdateBoardRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateBoardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            // 게시판관리 수정시 폼 체크
+            'name' => ['required', 'max:50', 'min:4'],
+            'display_name' => ['required', 'max:255'],
         ];
     }
 }
