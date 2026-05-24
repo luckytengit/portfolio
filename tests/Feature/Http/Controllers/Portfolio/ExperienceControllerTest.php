@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers\Portfolio;
 
 use App\Models\Experience;
+use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -21,6 +22,10 @@ class ExperienceControllerTest extends TestCase
         $attachment = UploadedFile::fake()->image('fileExp.jpg');
 
         $experience = Experience::factory()->create();
+
+        // For Policy
+        $userRw = User::where('email', config("app.appAdminEmail"))->get();
+        $experience['user_id'] = $userRw[0]['id'];
 
         $data = [
             'subject' => $this->faker->text(10),
@@ -58,6 +63,10 @@ class ExperienceControllerTest extends TestCase
         $attachment = UploadedFile::fake()->image('fileExp2.jpg');
 
         $experience = Experience::factory()->create();
+
+        // For Policy
+        $userRw = User::where('email', config("app.appAdminEmail"))->get();
+        $experience['user_id'] = $userRw[0]['id'];
 
         $data = [
             'subject' => $this->faker->text(10),
