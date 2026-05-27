@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Experience;
+use App\Models\Board\Board;
+use App\Models\Board\Post;
 
 class User extends Authenticatable
 {
@@ -53,4 +55,9 @@ class User extends Authenticatable
     public function boards() {
         return $this->hasMany(Board::class);
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
 }

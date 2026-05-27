@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BoardController;
+use App\Http\Controllers\Board\BoardController;
 use Illuminate\Support\Facades\Route;
 
 
