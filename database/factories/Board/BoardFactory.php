@@ -2,14 +2,14 @@
 
 namespace Database\Factories\Board;
 
-use App\Models\Board\Board;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Board\Post>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Board>
  */
-class PostFactory extends Factory
+class BoardFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,9 +20,10 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'board_id' => Board::factory(),
-            'title' => fake()->text(50),
-            'content' => fake()->text,
+            'name' => function(array $attributes) {
+                return Str::slug($attributes['display_name']);
+            },
+            'display_name' => fake()->unique()->words(3,true)
         ];
     }
 }

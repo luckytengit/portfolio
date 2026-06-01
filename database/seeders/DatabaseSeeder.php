@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // ExperienceSeeder::class,
-            BoardSeeder::class,
+            // BoardSeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

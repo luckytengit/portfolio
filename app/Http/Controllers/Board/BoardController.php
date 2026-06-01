@@ -21,7 +21,7 @@ class BoardController extends Controller
     {
         // 게시판관리 - 메인 리스트단
         return view('board.index', [
-            'boards' => Board::with('user')->paginate(10)
+            'boards' => Board::with('user')->latest()->paginate(10)
         ]);
     }
 

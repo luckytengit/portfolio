@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
             port: 5173,
             cors: true,
             hmr: {
-                host: '192.168.0.13', // 브라우저가 HMR을 찾을 주소 (또는 윈도우의 로컬 IP)
+                host: '192.168.0.12', // 브라우저가 HMR을 찾을 주소 (또는 윈도우의 로컬 IP)
             },
         },
     }
