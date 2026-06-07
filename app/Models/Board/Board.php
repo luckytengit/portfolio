@@ -3,6 +3,7 @@
 namespace App\Models\Board;
 
 use App\Models\User;
+use App\Models\Board\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

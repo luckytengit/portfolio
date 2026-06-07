@@ -1,6 +1,6 @@
 @extends ("layouts.app")
 
-@section("title", "게시판관리")
+@section("title", "게시판")
 
 @section("content")
     <section class="py-3" style="min-height: 500px">
