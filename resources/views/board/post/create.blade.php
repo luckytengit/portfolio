@@ -23,7 +23,6 @@
                 @endif
 
                 <input type="hidden" name="id" id="id" value="{{ $post->id }}">
-                <input type="hidden" name="board_id" id="board_id" value="{{ $post->board_id }}">
 
                 <div class="row p-2">
 

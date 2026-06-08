@@ -22,7 +22,7 @@
 
                 <div class="mb-3">
                     <div class="form-label table-responsive border-start ps-2" id="title">
-                        {{ $user->name }}
+                        {{ $post->user->name }}
                         <br/> {{ $post->created_at }}
                     </div>
                 </div>
@@ -46,7 +46,7 @@
 
                         <button type="button" class="btn btn-danger btn-sm btnDelete" data-name="{{ $post->id}}">삭제</button>
 
-                        <a href="{{ route('boards.posts.index', $board) }}" class="btn btn-primary btn-sm">취소</a>
+                        <a href="{{ route('boards.posts.index', $post->board) }}" class="btn btn-primary btn-sm">취소</a>
                     </form>
 
                 </div>

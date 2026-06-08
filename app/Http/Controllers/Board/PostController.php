@@ -31,29 +31,27 @@ class PostController extends Controller
         return view('board.post.create', [
             'post' => (Object) [
                 'id' => '',
-                'board_id' => $board->id,
                 'title' => '',
                 'content' => ''
             ],
             'editorPath' => '../../../',
             'formActionUrl' => route('boards.posts.store', $board), // 등록 폼 Action url
-            'board' => $board,
+            'board' => $board, // 취소 버튼 url 관련
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StorePostRequest $request, Board $board)
     {
         // 게시판 글 등록 처리
         $user = $request->user();
 
-        $user->posts()->create(
-            $request->validated(),
-        );
+        $post = $user->posts()->make($request->validated());
+        $board->posts()->save($post);
 
-        return to_route("boards.posts.index", $request->board);
+        return to_route("boards.posts.index", $board);
 
     }
 
@@ -62,19 +60,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // Board 객체 추출
-        $boardArr = $post->board()->get();
-        $board = $boardArr[0];
-
-        // 유저 정보 추출
-        $userArr = $post->user()->get();
-        $user = $userArr[0];
-
         // 게시판 글 상세보기 페이지
         return view('board.post.show', [
             'post' => $post,
-            'board' => $board,
-            'user' => $user,
         ]);
     }
 
@@ -83,17 +71,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
-        // Board 객체 추출
-        $boardArr = $post->board()->get();
-        $board = $boardArr[0];
-
         // 게시판 글 수정 폼 (등록 폼 공유)
         return view('board.post.create', [
             'post' => $post,
             'editorPath' => '../../',
             'formActionUrl' => route('posts.update', $post), // 수정 폼 Action url
-            'board' => $board,
+            'board' => $post->board, // 취소 버튼 url 관련
         ]);
     }
 
@@ -114,12 +97,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // Board 객체 추출
-        $boardArr = $post->board()->get();
-        $board = $boardArr[0];
-
         $post->delete();
 
-        return to_route("boards.posts.index", $board);
+        return to_route("boards.posts.index", $post->board);
     }
 }

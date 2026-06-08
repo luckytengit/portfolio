@@ -23,7 +23,6 @@ class StorePostRequest extends FormRequest
     {
         return [
             // 게시판 글 등록 처리 부분
-            'board_id' => ['required', 'integer'],
             'title' => ['required', 'max:255', 'string'],
             'content' => ['required', 'string'],
         ];

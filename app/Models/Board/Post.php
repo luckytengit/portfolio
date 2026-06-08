@@ -14,7 +14,6 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'board_id',
     ];
 
     // user는 Post와 1:N 관계
