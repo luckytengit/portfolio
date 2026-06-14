@@ -25,6 +25,17 @@ class UpdatePostRequest extends FormRequest
             // 게시판 글 수정 처리 부분
             'title' => ['required', 'max:255', 'string'],
             'content' => ['required', 'string'],
+            'is_secret' => ['nullable', 'boolean'],
+        ];
+    }
+
+    /**
+     * 에러 메시지 Attribute 이름 한글화
+     */
+    public function attributes(): array
+    {
+        return [
+            'is_secret' => '비밀글',
         ];
     }
 }

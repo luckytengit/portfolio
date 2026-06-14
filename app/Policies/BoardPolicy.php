@@ -23,7 +23,7 @@ class BoardPolicy
     public function view(User $user, Board $board): bool
     {
         // 상세보기단 정책
-        return false;
+        return true;
     }
 
     /**

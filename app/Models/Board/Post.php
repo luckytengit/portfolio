@@ -16,6 +16,10 @@ class Post extends Model
         'content',
     ];
 
+    protected $casts = [
+        'is_secret' => 'boolean',
+    ];
+
     // user는 Post와 1:N 관계
     public function user() {
         return $this->belongsTo(User::class);

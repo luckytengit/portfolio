@@ -10,6 +10,11 @@ use App\Models\Board\Post;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -32,7 +37,8 @@ class PostController extends Controller
             'post' => (Object) [
                 'id' => '',
                 'title' => '',
-                'content' => ''
+                'content' => '',
+                'is_secret' => '0',
             ],
             'editorPath' => '../../../',
             'formActionUrl' => route('boards.posts.store', $board), // 등록 폼 Action url
@@ -49,6 +55,13 @@ class PostController extends Controller
         $user = $request->user();
 
         $post = $user->posts()->make($request->validated());
+
+        // 비밀글 저장 관련
+        $isSecret = false;
+        if ($request->is_secret == 1) $isSecret = true;
+
+        $post->is_secret = $isSecret;
+
         $board->posts()->save($post);
 
         return to_route("boards.posts.index", $board);
@@ -85,9 +98,17 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        // 게시글 수정 처리단
         $post->update(
             $request->validated(),
         );
+
+        // 비밀글 저장 관련
+        $isSecret = false;
+        if ($request->is_secret == 1) $isSecret = true;
+
+        $post->is_secret = $isSecret;
+        $post->save();
 
         return to_route("posts.show", $post);
     }

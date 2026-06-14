@@ -35,19 +35,21 @@
 
                 <div class="mb-3">
 
-                    <!-- Delete Post -->
+                    <!-- Update, Delete Post -->
                     <form method="POST" name="deleteFrm-{{ $post->id }}" id="deleteFrm-{{ $post->id }}" action="{{ route('posts.destroy', $post) }}">
                         @csrf
                         @method("DELETE")
 
                         <input type="hidden" name="board_id" id="board_id" value="{{ $post->board_id }}">
 
-                        <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary btn-sm">수정</a>
+                        @can(['update', 'delete'], $post)
+                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary btn-sm">수정</a>
+                            <button type="button" class="btn btn-danger btn-sm btnDelete" data-name="{{ $post->id}}">삭제</button>
+                        @endcan
 
-                        <button type="button" class="btn btn-danger btn-sm btnDelete" data-name="{{ $post->id}}">삭제</button>
-
-                        <a href="{{ route('boards.posts.index', $post->board) }}" class="btn btn-primary btn-sm">취소</a>
+                        <a href="{{ route('boards.posts.index', $post->board) }}" class="btn btn-primary btn-sm">목록</a>
                     </form>
+
 
                 </div>
             </div>

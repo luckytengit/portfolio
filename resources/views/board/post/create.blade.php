@@ -32,6 +32,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="is_secret" class="form-check-label text-primary">비밀글</label>
+                        <input type="checkbox" name="is_secret" value="1" class="form-check-input" id="is_secret" {{ $post->is_secret == 1 ? "checked": ""}} >
+                    </div>
+
+                    <div class="mb-3">
                         <label for="content" class="form-label text-primary">본문</label>
                         <textarea type="text" name="content" class="form-control" id="content" style="min-height:400px;width:100%">
                             {{ old("content", $post->content) }}
@@ -56,7 +61,7 @@
                                 등록
                             @endif
                         </button>
-                        <a href="{{ route('boards.posts.index', $board) }}" class="btn btn-primary btn-sm">취소</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">취소</a>
                     </div>
                 </div>
 
