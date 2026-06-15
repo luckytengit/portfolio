@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-md-2 p-2">
-                            {{ $item->created_at }}
+                            {{ $item->created_at->format('Y-m-d') }}
                         </div>
                     </div>
                 @endforeach
